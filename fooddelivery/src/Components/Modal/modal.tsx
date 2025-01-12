@@ -1,5 +1,5 @@
 import React from 'react'
-import { ModalProps } from '../Types/Interface'
+import { ModalProps } from '../../Types/Interface'
 
 const Modal : React.FC<ModalProps> = ({ children, onClose})  => {
   return (

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import roll from '../Assets/Icons/roll.jpg'
-import LoginForm from '../Components/loginForm'
-import SingupForm from '../Components/singupForm'
+import LoginForm from '../Components/Login/loginForm'
+import SingupForm from '../Components/Signup/singupForm'
 
 const Login: React.FC<{}> = ()  => {
     const[isLoginEnabled, setIsLoginEnabled] = useState<boolean>(true)
