@@ -20,7 +20,6 @@ const Navbar : React.FC<{}> = () =>{
         navigate("/resturants")
     }
 
-    console.log("hello")
     return(
         <div className="h-20 flex items-center max-w-screen-xl mx-auto">
             <div className="grow flex items-center">
