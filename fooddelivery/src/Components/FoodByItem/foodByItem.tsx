@@ -5,7 +5,7 @@ import { getResturantData } from '../../Slices/resturantDataSlice';
 
 import "./foodByItem.css";
 
-import { GoArrowRight, GoArrowLeft } from "react-icons/go";
+import Scroller from '../Scroller/scroller';
 
 const FoodByItem:React.FC<{}> =() => {
 
@@ -15,32 +15,14 @@ const FoodByItem:React.FC<{}> =() => {
 
     const dispatch = useDispatch()
 
-    const resturantData = useSelector((state : any) => state?.resturantData?.resturantData !== null && state?.resturantData?.resturantData[0]);
+    const resturantByFoodItems = useSelector((state : any) => state?.resturantData?.resturantData !== null && state?.resturantData?.resturantData[0]);
 
-    console.log(resturantData, "resturantData")
+    console.log(resturantByFoodItems, "food item")
     
     useEffect(() => {
         getMenuDetails()
     }, [])
 
-    const handleScrollleft = () => {
-        if(scrollContainerRef.current){
-            scrollContainerRef.current.scrollBy({
-                left: -600,
-                behavior: 'smooth'
-            })
-        }
-    }
-
-    const handleScrollRight = () => {
-        if(scrollContainerRef.current){
-            scrollContainerRef.current.scrollBy({
-                left:600,
-                behavior:'smooth'
-
-            })
-        }
-    }
 
 
     // const getMenuDetails = async() => {
@@ -91,31 +73,18 @@ const FoodByItem:React.FC<{}> =() => {
     return (
         <>
             {isLoading && <Loader />}
-            {resturantData !== null &&
+            {resturantByFoodItems !== null &&
             <div className='custom-margin overflow-hidden'>
             <div >
                     <div className='flex justify-between mb-5'>
                         <div>
-                            <h1 className='text-3xl font-bold'>{resturantData?.card?.card?.header?.title}</h1>
+                            <h1 className='text-3xl font-bold'>{resturantByFoodItems?.card?.card?.header?.title}</h1>
                         </div>
-                        <div>
-                            <button
-                                className='bg-gray-300 text-black p-3 rounded-full font-bold mr-2'
-                                onClick={handleScrollleft}
-                                >
-                                <GoArrowLeft />
-                            </button>
-                            <button
-                                className='bg-gray-300 text-black p-3 rounded-full text-bold'
-                                onClick={handleScrollRight}
-                                >
-                                <GoArrowRight />
-                            </button>
-                        </div>
+                        <Scroller refDetails={scrollContainerRef}/>
                     </div>
                     <div className='flex bg-transparent overflow-scroll scrollbar-hide'
                         ref={scrollContainerRef}>
-                        {resturantData?.card?.card?.imageGridCards?.info?.map((item : any) => (
+                        {resturantByFoodItems?.card?.card?.imageGridCards?.info?.map((item : any) => (
                             <div
                                 key={item.id}>
                                 <a className='cursor-pointer' href='as'>

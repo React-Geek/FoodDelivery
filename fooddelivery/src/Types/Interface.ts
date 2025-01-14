@@ -17,3 +17,7 @@ export interface SigninSelector{
     signIn : SigninSlice
 }
 
+export interface ScrollRef{
+    refDetails : React.RefObject<HTMLDivElement | null>
+}
+

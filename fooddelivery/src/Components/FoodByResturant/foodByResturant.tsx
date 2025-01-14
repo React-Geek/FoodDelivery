@@ -1,9 +1,11 @@
 import React from 'react'
-import { UseSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 const FoodByResturant: React.FC<{}> = () => {
 
-  // const resturantData = us
+  const resturantByFoodChains = useSelector((state : any) => state?.resturantData?.resturantData && state?.resturantData?.resturantData[1])
+
+  console.log(resturantByFoodChains, "foodchain")
 
   return (
     <div>foodnF</div>
