@@ -12,3 +12,9 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+@layer utilities{
+  .margin-hr{
+    margin: calc(10% + 32px);
+  }
+}
