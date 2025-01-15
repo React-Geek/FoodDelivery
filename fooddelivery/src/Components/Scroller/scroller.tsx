@@ -2,10 +2,7 @@ import React from 'react';
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 import { ScrollRef } from '../../Types/Interface';
 
-
-
 const Scroller:React.FC<ScrollRef> = ({refDetails})  => {
-
     const handleScroll =(scrollPosition : string) => {
         if (refDetails.current){
             refDetails.current.scrollBy({
@@ -14,7 +11,6 @@ const Scroller:React.FC<ScrollRef> = ({refDetails})  => {
             })
         }
     }
-
 
   return (
             <div>

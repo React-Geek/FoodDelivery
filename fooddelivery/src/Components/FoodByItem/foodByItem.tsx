@@ -9,50 +9,55 @@ import Scroller from '../Scroller/scroller';
 
 const FoodByItem:React.FC<{}> =() => {
 
+    console.log("Food by item conponent")
+
     // const [menuByFood, setMenuByFood] = useState<any>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
     const dispatch = useDispatch()
-
+    
     const resturantByFoodItems = useSelector((state : any) => state?.resturantData?.resturantData !== null && state?.resturantData?.resturantData[0]);
-
+    
     console.log(resturantByFoodItems, "food item")
     
     useEffect(() => {
+        console.log("HI from useEffect")
         getMenuDetails()
     }, [])
-
-
-
+    
+    
+    
     // const getMenuDetails = async() => {
-    //     try {
+        //     try {
     //         setIsLoading(true)
     //         const proxyUrl = "https://cors-anywhere.herokuapp.com/";
     //         const targetUrl = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9689968&lng=77.72088529999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
-            
+    
     //         let response = await fetch(proxyUrl + targetUrl, {
-    //             headers: {
+        //             headers: {
     //                 'X-Requested-With': 'XMLHttpRequest'
     //             }
     //         });
-      
+    
     //         if (response.ok) {
     //             let resp = await response.json();
     //             setMenuByFood(resp.data.cards[0]);
     //             setIsLoading(false)
     //         }
     //     } catch (err) {
-    //         console.error(err);
-    //     }
+        //         console.error(err);
+        //     }
     //   }
 
-      const getMenuDetails = async () => {
+    const getMenuDetails = async () => {
+        // debugger
+        console.log("hi making api call")
         try {
             setIsLoading(true);
             const targetUrl = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9689968&lng=77.72088529999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
             const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
-    
+            
             let response = await fetch(proxyUrl);
             if (response.ok) {
                 let resp = await response.json();
@@ -60,16 +65,17 @@ const FoodByItem:React.FC<{}> =() => {
                 // setMenuByFood(menuData.data.cards[0]);
                 setIsLoading(false)
                 dispatch(getResturantData(menuData.data.cards))
-
+                
             }
         } catch (err) {
             console.error(err);
         }
     };
     
-      
+    
     // console.log(menuByFood, "menuByFood")
     
+    // getMenuDetails()
     return (
         <>
             {isLoading && <Loader />}
